@@ -72,19 +72,9 @@ class _MyAppState extends State<MyApp> {
     final outputPath = '$rawDocumentPath/output.mp4';
 
     final FlutterFFmpeg _flutterFFmpeg = new FlutterFFmpeg();
-    // _flutterFFmpeg
-    //     .execute(
-    //         "-i ${_storedVideoOne.path} -i ${_storedVideoTwo.path} -filter_complex '[0:0][1:0]concat=n=2:v=0:a=1[out]' -map '[out]' output.mp4")
-    //     .then((rc) => print("FFmpeg process exited with rc $rc"));
 
         String commandToExecute = '-i ${_storedVideoOne.path} -i ${_storedVideoTwo.path} -filter_complex \'[0:0][1:0]concat=n=2:v=0:a=1[out]\' -map \'[out]\' outputPath';
         _flutterFFmpeg.execute(commandToExecute).then((rc) => print("FFmpeg process exited with rc $rc"));
-  
-  final FlutterFFmpegConfig _flutterFFmpegConfig = new FlutterFFmpegConfig();
-
-_flutterFFmpegConfig.getLastReturnCode().then((rc) => print("Last rc: $rc"));
-
-_flutterFFmpegConfig.getLastCommandOutput().then((output) => print("Last command output: $output"));
 
   }
 
