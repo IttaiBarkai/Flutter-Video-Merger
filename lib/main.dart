@@ -73,7 +73,7 @@ class _MyAppState extends State<MyApp> {
 
     final FlutterFFmpeg _flutterFFmpeg = new FlutterFFmpeg();
 
-        String commandToExecute = '-i ${_storedVideoOne.path} -i ${_storedVideoTwo.path} -filter_complex \'[0:0][1:0]concat=n=2:v=1:a=0[out]\' -map \'[out]\' outputPath';
+        String commandToExecute = '-y -i ${_storedVideoOne.path} -i ${_storedVideoTwo.path} -filter_complex \'[0:0][1:0]concat=n=2:v=1:a=0[out]\' -map \'[out]\' $outputPath';
         _flutterFFmpeg.execute(commandToExecute).then((rc) => print("FFmpeg process exited with rc $rc"));
 
   }
